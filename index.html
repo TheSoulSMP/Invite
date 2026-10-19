@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#061c2b">
-<title>TideSMP — Discord</title>
+<title>TideSMP/title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
 <style>
 :root{color-scheme:light dark;--ink:light-dark(#102b3a,#eafaff);--muted:light-dark(#527080,#9abac8);--panel:light-dark(rgba(245,253,255,.82),rgba(6,27,42,.78));--line:light-dark(rgba(18,106,135,.2),rgba(135,225,246,.18));--aqua:#65efff;--blue:#168fca}
@@ -59,16 +59,15 @@ const inviteCode = "UTbJVnWVjJ";
 const membersEl = document.getElementById("members");
 const onlineEl = document.getElementById("online");
 
-const inviteApiUrl = `https://discord.com/api/v10/invites/${inviteCode}?with_counts=true`;
-const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(inviteApiUrl)}`;
+const targetUrl = `https://discord.com/api/v10/invites/${inviteCode}?with_counts=true`;
+const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
 
 fetch(proxyUrl)
-  .then(response => {
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    return response.json();
-  })
-  .then(data => {
+  .then(response => response.json())
+  .then(res => {
+    const data = JSON.parse(res.contents);
     const guild = data.guild || data;
+    
     if (guild?.icon && guild?.id) {
       const iconUrl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128`;
       document.getElementById("serverIcon").src = iconUrl;
@@ -82,11 +81,10 @@ fetch(proxyUrl)
     onlineEl.textContent = Number.isFinite(onlineCount) ? `${onlineCount.toLocaleString()} online` : "Online counts hidden";
   })
   .catch(error => {
-    console.warn("Failed to fetch via proxy, using fallback:", error);
-    membersEl.textContent = "Join Discord";
-    onlineEl.textContent = "Available";
+    console.warn("Error loading Discord data:", error);
+    membersEl.textContent = "Counts unavailable";
+    onlineEl.textContent = "Unavailable";
   });
 </script>
 </body>
 </html>
-```[cite: 1]
