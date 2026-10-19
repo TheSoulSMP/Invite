@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#061c2b">
+<title>TideSMP — Discord</title>
+<style>
+:root{color-scheme:light dark;--ink:light-dark(#102b3a,#eafaff);--muted:light-dark(#527080,#9abac8);--panel:light-dark(rgba(245,253,255,.82),rgba(6,27,42,.78));--line:light-dark(rgba(18,106,135,.2),rgba(135,225,246,.18));--aqua:#65efff;--blue:#168fca}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#061c2b;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}.site{min-height:100vh;overflow:hidden;position:relative;background:radial-gradient(ellipse at 50% 0%,#104d68 0%,#082e43 34%,#061c2b 72%)}.ocean{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}.glow{position:absolute;width:70vw;height:70vw;max-width:900px;max-height:900px;border-radius:50%;filter:blur(90px);opacity:.17;background:#1ec8e7;left:-25%;top:22%}.glow.two{left:auto;right:-30%;top:44%;background:#167bce;opacity:.18}.wave{position:absolute;left:-10%;width:120%;height:250px;border-radius:48%;border-top:1px solid rgba(123,239,255,.24);transform:rotate(-7deg);filter:drop-shadow(0 0 18px rgba(46,215,255,.13));animation:drift 12s ease-in-out infinite alternate}.wave.w1{top:32%}.wave.w2{top:36%;left:-15%;animation-delay:-5s;opacity:.6}.wave.w3{top:69%;transform:rotate(5deg);animation-delay:-8s}.bubble{position:absolute;border:1px solid rgba(159,242,255,.25);border-radius:50%;box-shadow:inset -4px -4px 12px rgba(71,220,255,.08),0 0 18px rgba(61,210,255,.08);animation:float 8s ease-in-out infinite}.bubble.b1{width:22px;height:22px;left:12%;top:25%}.bubble.b2{width:9px;height:9px;right:18%;top:31%;animation-delay:-3s}.bubble.b3{width:34px;height:34px;right:10%;top:67%;animation-delay:-5s}.bubble.b4{width:13px;height:13px;left:23%;top:77%;animation-delay:-2s}@keyframes drift{to{transform:translateX(4%) rotate(-4deg)}}@keyframes float{50%{transform:translateY(-24px) translateX(8px);opacity:.55}}.content{position:relative;z-index:1;max-width:1120px;margin:auto;padding:28px 24px 36px}.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:.02em}.mark{display:grid;place-items:center;width:40px;height:40px;border-radius:14px;background:linear-gradient(145deg,#8af6ff,#1387bd);color:#052333;box-shadow:0 0 28px #36d8f844;font-size:22px}.brand small{display:block;color:#8ec5d5;font-size:10px;letter-spacing:.24em;font-weight:700;margin-top:2px}.navlink{font-size:13px;color:#b7dce7;border:1px solid rgba(154,232,249,.18);padding:10px 15px;border-radius:999px;background:#0a304455;transition:.2s}.navlink:hover{border-color:#69eaff;color:white;transform:translateY(-1px)}.hero{text-align:center;padding:76px 0 32px}.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border-radius:999px;border:1px solid #6ee8ff40;background:#0d40514d;color:#a8f5ff;font-size:11px;font-weight:800;letter-spacing:.19em;text-transform:uppercase}.pulse{width:7px;height:7px;background:#71ffc6;border-radius:50%;box-shadow:0 0 12px #71ffc6}.hero h1{font-size:clamp(46px,8vw,90px);line-height:.98;letter-spacing:-.065em;margin:24px 0 18px;font-weight:900;color:#f2fdff;text-shadow:0 5px 36px #3deaff24}.hero h1 span{display:block;background:linear-gradient(100deg,#a8faff 4%,#e8ffff 47%,#62c8f8 90%);background-clip:text;-webkit-background-clip:text;color:transparent}.hero p{max-width:550px;margin:0 auto;color:#b4d3df;font-size:16px;line-height:1.8}.server-card{max-width:540px;margin:26px auto 0;padding:22px;border-radius:25px;border:1px solid #a5efff2e;background:linear-gradient(140deg,#12465bbd,#071f31e8 74%);box-shadow:0 25px 80px #0005, inset 0 1px #c8fbff1c;backdrop-filter:blur(18px);text-align:left;position:relative}.card-top{display:flex;align-items:center;gap:15px}.server-icon{width:62px;height:62px;border-radius:19px;flex:none;display:grid;place-items:center;font-size:30px;background:linear-gradient(145deg,#b1faff,#278ec5 70%,#15517c);box-shadow:0 7px 28px #38dfff30;color:#052739}.server-title{font-size:20px;font-weight:850;letter-spacing:-.03em}.server-sub{font-size:12px;color:#a1c8d6;margin-top:5px}.verified{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;color:#9ff6ff;background:#1d9ab82c;border:1px solid #7ce8ff2c;border-radius:999px;padding:5px 8px;margin-top:8px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.stat{padding:14px 15px;border:1px solid #9eefff1c;border-radius:15px;background:#041a2b69}.stat-label{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:#8fbac9;font-weight:800}.stat-value{font-size:24px;font-weight:850;letter-spacing:-.04em;margin-top:5px;color:#f0fdff}.stat-value.online{display:flex;align-items:center;gap:8px;font-size:21px}.green{width:8px;height:8px;border-radius:50%;background:#5cffb0;box-shadow:0 0 12px #5cffb0}.join{width:100%;border:0;cursor:pointer;border-radius:14px;padding:16px 18px;background:linear-gradient(100deg,#a5faff,#4ed5ed 50%,#55b8ff);color:#062637;font-size:14px;font-weight:900;letter-spacing:.01em;box-shadow:0 8px 30px #24c5eb27;transition:transform .2s,filter .2s;display:flex;align-items:center;justify-content:center;gap:10px}.join:hover{transform:translateY(-2px);filter:brightness(1.08)}.join:active{transform:translateY(0)}.join svg{width:18px;height:18px}.card-foot{display:flex;justify-content:space-between;gap:12px;margin-top:13px;color:#8fb7c7;font-size:11px}.card-foot a{color:#b6eff8;text-decoration:underline;text-decoration-color:#65efff55;text-underline-offset:3px}.below{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:42px 0 0}.feature{border:1px solid #a5eefe1a;background:#09283bb8;border-radius:18px;padding:20px}.feature-icon{font-size:20px;margin-bottom:12px}.feature h3{margin:0 0 7px;font-size:14px}.feature p{margin:0;color:#a5c4d0;font-size:12px;line-height:1.7}.footer{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-top:48px;padding-top:20px;border-top:1px solid #a5eefe18;color:#789eaf;font-size:11px}.footer strong{color:#a9eaf4;letter-spacing:.12em}.note{font-size:10px;color:#789eaf;line-height:1.6;text-align:center;margin:18px auto 0;max-width:540px}@media(max-width:650px){.content{padding:20px 16px 26px}.hero{padding:64px 0 22px}.hero p{font-size:14px}.server-card{padding:17px;border-radius:21px}.below{grid-template-columns:1fr;margin-top:28px}.feature{display:flex;gap:14px;align-items:flex-start;padding:16px}.feature-icon{margin:0;font-size:21px}.feature h3{margin-top:2px}.footer{flex-direction:column;text-align:center;margin-top:32px}.navlink{font-size:11px;padding:9px 11px}.card-foot{font-size:10px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="site">
+  <div class="ocean" aria-hidden="true">
+    <div class="glow"></div><div class="glow two"></div>
+    <div class="wave w1"></div><div class="wave w2"></div><div class="wave w3"></div>
+    <div class="bubble b1"></div><div class="bubble b2"></div><div class="bubble b3"></div><div class="bubble b4"></div>
+  </div>
+  <main class="content">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="TideSMP home"><span class="mark">T</span><span>TideSMP<small>VANILLA SURVIVAL</small></span></a>
+      <a class="navlink" href="https://discord.gg/UTbJVnWVjJ" target="_blank" rel="noopener noreferrer">Discord ↗</a>
+    </nav>
+    <section class="hero">
+      <div class="eyebrow"><span class="pulse"></span> DISCORD SERVER</div>
+      <h1>TideSMP <span>Community</span></h1>
+      <p>A vanilla Minecraft SMP. Join the Discord to meet the community and apply for access to the server.</p>
+      <section class="server-card" aria-label="TideSMP Discord invite">
+        <div class="card-top">
+          <img class="server-icon" id="serverIcon" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="TideSMP Discord server logo">
+          <div>
+            <div class="server-title">TideSMP Community</div>
+            <div class="server-sub">Vanilla Minecraft Survival</div>
+            <div class="verified">● OFFICIAL DISCORD</div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="stat-label">Total members</div><div class="stat-value" id="members">Loading…</div><div class="stat-hint">Discord community</div></div>
+          <div class="stat"><div class="stat-label">Online now</div><div class="stat-value online"><span class="green"></span><span id="online">Loading…</span></div><div class="stat-hint">Members currently online</div></div>
+        </div>
+        <a class="join" href="https://discord.gg/UTbJVnWVjJ" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.7 5.3A18.2 18.2 0 0 0 15.2 4l-.6 1.2a16.7 16.7 0 0 0-5.2 0L8.8 4a18.2 18.2 0 0 0-4.5 1.3C1.5 9.4.7 13.4 1.1 17.4a18.3 18.3 0 0 0 5.5 2.8l1.2-2a11.8 11.8 0 0 1-1.9-.9l.5-.4a13 13 0 0 0 11.2 0l.5.4a11.8 11.8 0 0 1-1.9.9l1.2 2a18.3 18.3 0 0 0 5.5-2.8c.5-4.6-.8-8.6-3.2-12.1ZM8.7 14.8c-1.1 0-2-1-2-2.2s.9-2.2 2-2.2 2 1 2 2.2-.9 2.2-2 2.2Zm6.6 0c-1.1 0-2-1-2-2.2s.9-2.2 2-2.2 2 1 2 2.2-.9 2.2-2 2.2Z"/></svg>
+          Join the Discord
+          <span aria-hidden="true">→</span>
+        </a>
+        <div class="card-foot"><span>Join Discord to apply</span><a href="https://discord.gg/UTbJVnWVjJ" target="_blank" rel="noopener noreferrer">Open invite ↗</a></div>
+      </section>
+      <p class="note">Applications are handled in Discord. Join the server and follow the application instructions.</p>
+    </section>
+    <footer class="footer"><span>© <span id="year"></span> TideSMP</span><span>Vanilla Minecraft SMP</span><a href="https://discord.gg/UTbJVnWVjJ" target="_blank" rel="noopener noreferrer">Join Discord ↗</a></footer>
+  </main>
+</div>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const inviteCode = "UTbJVnWVjJ";
+const serverId = "1560809987176005663";
+const membersEl = document.getElementById("members");
+const onlineEl = document.getElementById("online");
+membersEl.textContent = "Loading…";
+onlineEl.textContent = "Loading…";
+
+const inviteApiUrl = `https://discord.com/api/v10/invites/${inviteCode}?with_counts=true&with_expiration=true`;
+const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(inviteApiUrl)}`;
+
+fetch(proxyUrl)
+  .then(response => {
+    if (!response.ok) throw new Error(`Proxy returned ${response.status}`);
+    return response.json();
+  })
+  .then(async data => {
+    if (data.guild?.icon && data.guild?.id) {
+      document.getElementById("serverIcon").src = `https://cdn.discordapp.com/icons/${data.guild.id}/${data.guild.icon}.png?size=128`;
+    }
+    const memberCount = data.approximate_member_count;
+    let onlineCount = data.approximate_presence_count;
+    
+    if (!Number.isFinite(onlineCount)) {
+      try {
+        const widgetApiUrl = `https://discord.com/api/guilds/${serverId}/widget.json`;
+        const widgetProxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(widgetApiUrl)}`;
+        const widgetResponse = await fetch(widgetProxyUrl);
+        if (widgetResponse.ok) {
+          const widgetData = await widgetResponse.json();
+          if (Number.isFinite(widgetData.presence_count)) onlineCount = widgetData.presence_count;
+        }
+      } catch (widgetError) {
+        console.warn("Discord server widget is unavailable:", widgetError);
+      }
+    }
+    
+    membersEl.textContent = Number.isFinite(memberCount) ? `${memberCount.toLocaleString()} members` : "Counts unavailable";
+    onlineEl.textContent = Number.isFinite(onlineCount) ? `${onlineCount.toLocaleString()} online` : "Enable Discord widget";
+  })
+  .catch(error => {
+    console.warn("Could not load TideSMP Discord counts:", error);
+    membersEl.textContent = "Counts unavailable";
+    onlineEl.textContent = "Counts unavailable";
+  });
+</script>
+</body>
+</html>
