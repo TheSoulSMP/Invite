@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#061c2b">
-<title>TideSMP</title>
+<title>TideSMP — Discord</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
 <style>
 :root{color-scheme:light dark;--ink:light-dark(#102b3a,#eafaff);--muted:light-dark(#527080,#9abac8);--panel:light-dark(rgba(245,253,255,.82),rgba(6,27,42,.78));--line:light-dark(rgba(18,106,135,.2),rgba(135,225,246,.18));--aqua:#65efff;--blue:#168fca}
@@ -56,18 +56,23 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const inviteCode = "UTbJVnWVjJ";
+const serverId = "1560809987176005663";
 const membersEl = document.getElementById("members");
 const onlineEl = document.getElementById("online");
+membersEl.textContent = "Loading…";
+onlineEl.textContent = "Loading…";
 
-const targetUrl = `https://discord.com/api/v10/invites/${inviteCode}?with_counts=true`;
-const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
+const inviteApiUrl = `https://discord.com/api/v10/invites/${inviteCode}?with_counts=true&with_expiration=true`;
+const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(inviteApiUrl)}`;
 
 fetch(proxyUrl)
-  .then(response => response.json())
-  .then(res => {
-    const data = JSON.parse(res.contents);
+  .then(response => {
+    if (!response.ok) throw new Error(`Proxy returned ${response.status}`);
+    return response.json();
+  })
+  .then(async data => {
+    // Properly extract guild icon from invite object and update both logos
     const guild = data.guild || data;
-    
     if (guild?.icon && guild?.id) {
       const iconUrl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128`;
       document.getElementById("serverIcon").src = iconUrl;
@@ -75,16 +80,31 @@ fetch(proxyUrl)
     }
     
     const memberCount = data.approximate_member_count;
-    const onlineCount = data.approximate_presence_count;
+    let onlineCount = data.approximate_presence_count;
+    
+    if (!Number.isFinite(onlineCount)) {
+      try {
+        const widgetApiUrl = `https://discord.com/api/guilds/${serverId}/widget.json`;
+        const widgetProxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(widgetApiUrl)}`;
+        const widgetResponse = await fetch(widgetProxyUrl);
+        if (widgetResponse.ok) {
+          const widgetData = await widgetResponse.json();
+          if (Number.isFinite(widgetData.presence_count)) onlineCount = widgetData.presence_count;
+        }
+      } catch (widgetError) {
+        console.warn("Discord server widget is unavailable:", widgetError);
+      }
+    }
     
     membersEl.textContent = Number.isFinite(memberCount) ? `${memberCount.toLocaleString()} members` : "Counts unavailable";
-    onlineEl.textContent = Number.isFinite(onlineCount) ? `${onlineCount.toLocaleString()} online` : "Online counts hidden";
+    onlineEl.textContent = Number.isFinite(onlineCount) ? `${onlineCount.toLocaleString()} online` : "Enable Discord widget";
   })
   .catch(error => {
-    console.warn("Error loading Discord data:", error);
+    console.warn("Could not load TideSMP Discord counts:", error);
     membersEl.textContent = "Counts unavailable";
-    onlineEl.textContent = "Unavailable";
+    onlineEl.textContent = "Counts unavailable";
   });
 </script>
 </body>
 </html>
+```[cite: 1]
