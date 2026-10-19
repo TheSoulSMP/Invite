@@ -56,54 +56,37 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const inviteCode = "UTbJVnWVjJ";
-const serverId = "1560809987176005663";
 const membersEl = document.getElementById("members");
 const onlineEl = document.getElementById("online");
-membersEl.textContent = "Loading…";
-onlineEl.textContent = "Loading…";
 
-const inviteApiUrl = `https://discord.com/api/v10/invites/${inviteCode}?with_counts=true&with_expiration=true`;
-const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(inviteApiUrl)}`;
+const inviteApiUrl = `https://discord.com/api/v10/invites/${inviteCode}?with_counts=true`;
+const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(inviteApiUrl)}`;
 
 fetch(proxyUrl)
   .then(response => {
-    if (!response.ok) throw new Error(`Proxy returned ${response.status}`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.json();
   })
-  .then(async data => {
+  .then(data => {
     const guild = data.guild || data;
     if (guild?.icon && guild?.id) {
       const iconUrl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128`;
-      // Update both the server card icon and the top-left navigation logo icon
       document.getElementById("serverIcon").src = iconUrl;
       document.getElementById("navIcon").src = iconUrl;
     }
     
     const memberCount = data.approximate_member_count;
-    let onlineCount = data.approximate_presence_count;
-    
-    if (!Number.isFinite(onlineCount)) {
-      try {
-        const widgetApiUrl = `https://discord.com/api/guilds/${serverId}/widget.json`;
-        const widgetProxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(widgetApiUrl)}`;
-        const widgetResponse = await fetch(widgetProxyUrl);
-        if (widgetResponse.ok) {
-          const widgetData = await widgetResponse.json();
-          if (Number.isFinite(widgetData.presence_count)) onlineCount = widgetData.presence_count;
-        }
-      } catch (widgetError) {
-        console.warn("Discord server widget is unavailable:", widgetError);
-      }
-    }
+    const onlineCount = data.approximate_presence_count;
     
     membersEl.textContent = Number.isFinite(memberCount) ? `${memberCount.toLocaleString()} members` : "Counts unavailable";
-    onlineEl.textContent = Number.isFinite(onlineCount) ? `${onlineCount.toLocaleString()} online` : "Enable Discord widget";
+    onlineEl.textContent = Number.isFinite(onlineCount) ? `${onlineCount.toLocaleString()} online` : "Online counts hidden";
   })
   .catch(error => {
-    console.warn("Could not load TideSMP Discord counts:", error);
-    membersEl.textContent = "Counts unavailable";
-    onlineEl.textContent = "Counts unavailable";
+    console.warn("Failed to fetch via proxy, using fallback:", error);
+    membersEl.textContent = "Join Discord";
+    onlineEl.textContent = "Available";
   });
 </script>
 </body>
 </html>
+```[cite: 1]
