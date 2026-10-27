@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#06283d">
-<meta name="description" content="Join TideSMP, a vanilla Minecraft survival community.">
-<title>TideSMP</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌊%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#08070d">
+<meta name="description" content="Enter SoulSMP, a dark Minecraft survival community.">
+<title>SoulSMP</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E☾%3C/text%3E%3C/svg%3E">
 <style>
 :root{
   --bg:#041b2a;--panel:rgba(5,31,47,.82);--line:rgba(133,229,255,.2);
@@ -98,6 +98,76 @@ h1 span{display:block;color:#9df5ff;text-shadow:0 0 35px rgba(63,221,255,.2)}
   .footer{flex-wrap:wrap}.card-foot{font-size:9px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+
+/* SoulSMP dark-soul theme */
+:root{
+  --bg:#07070b;
+  --panel:rgba(14,13,20,.94);
+  --line:rgba(151,135,190,.18);
+  --text:#e8e5ef;
+  --muted:#9a95a8;
+  --aqua:#a79acb;
+  --blue:#514667;
+}
+body{background:#07070b;color:var(--text)}
+.site{
+  background:
+    radial-gradient(ellipse at 50% 28%,rgba(57,45,78,.20),transparent 42%),
+    radial-gradient(ellipse at 50% 90%,rgba(32,27,44,.24),transparent 45%),
+    linear-gradient(180deg,#0b0a10 0%,#08070c 55%,#050508 100%);
+}
+.ocean{
+  background:
+    radial-gradient(ellipse at 50% 35%,rgba(99,78,130,.10),transparent 42%),
+    radial-gradient(ellipse at 15% 80%,rgba(65,54,85,.07),transparent 35%);
+}
+.light-ray,.waterline,.bubble,.particle{display:none!important}
+.brand small{color:#91869f}
+.navlink{
+  color:#c5bfd2;
+  border-color:rgba(164,148,190,.18);
+  background:rgba(15,13,21,.72);
+}
+.navlink:hover{border-color:#75658f;background:rgba(91,73,119,.12)}
+.eyebrow{
+  border-color:rgba(159,143,190,.22);
+  background:rgba(20,17,28,.78);
+  color:#c0b4d5;
+}
+.pulse{background:#81729d;box-shadow:0 0 9px rgba(129,114,157,.45)}
+h1 span{color:#b1a4ca;text-shadow:0 0 24px rgba(120,99,153,.12)}
+.intro{color:#aaa4b5}
+.server-card{
+  border-color:rgba(155,139,183,.2);
+  background:linear-gradient(145deg,rgba(21,19,29,.97),rgba(8,7,12,.98));
+  box-shadow:0 24px 70px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.025);
+}
+.server-icon{
+  background:linear-gradient(145deg,#4c435c,#17151e);
+  border-color:rgba(169,153,196,.18);
+}
+.server-sub{color:#9992a8}
+.verified{
+  border-color:rgba(154,137,184,.18);
+  background:rgba(89,72,113,.13);
+  color:#bdb0d2;
+}
+.stat{border-color:rgba(155,139,183,.12);background:rgba(4,4,8,.45)}
+.stat-label{color:#a29aae}
+.stat-hint{color:#817b8e}
+.green{background:#8d7ca9;box-shadow:0 0 8px rgba(141,124,169,.4)}
+.join{
+  background:linear-gradient(100deg,#b1a6c5,#827393 55%,#62566f);
+  color:#0c0a10;
+  box-shadow:0 7px 24px rgba(67,53,85,.12);
+}
+.join:hover{filter:brightness(1.06)}
+.card-foot{color:#888195}
+.card-foot a{color:#c2b6d4;text-decoration-color:#8f7ca766}
+.status-note{color:#817b8e}
+.footer{border-top-color:rgba(155,139,183,.12);color:#827b90}
+.footer strong{color:#c5b9d5}
+
 </style>
 </head>
 <body>
@@ -119,21 +189,21 @@ h1 span{display:block;color:#9df5ff;text-shadow:0 0 35px rgba(63,221,255,.2)}
 
   <main class="shell">
     <nav class="nav" aria-label="Main navigation">
-      <div class="brand">TideSMP<small>VANILLA SURVIVAL</small></div>
-      <a class="navlink" href="https://discord.gg/UTbJVnWVjJ" target="_blank" rel="noopener noreferrer">Discord ↗</a>
+      <div class="brand">SoulSMP<small>SOUL SURVIVAL</small></div>
+      <a class="navlink" href="https://discord.gg/KDCrCV8GDj" target="_blank" rel="noopener noreferrer">Discord ↗</a>
     </nav>
 
     <section class="hero">
-      <div class="eyebrow"><span class="pulse"></span> DISCORD SERVER</div>
-      <h1>TideSMP <span>Community</span></h1>
-      <p class="intro">A vanilla Minecraft SMP. Join the Discord to meet the community and apply for access to the server.</p>
+      <div class="eyebrow"><span class="pulse"></span> SOULSMP • DISCORD</div>
+      <h1>SoulSMP <span>Community</span></h1>
+      <p class="intro">A darker kind of survival. Join the SoulSMP Discord and step into the world.</p>
 
-      <section class="server-card" aria-label="TideSMP Discord invite">
+      <section class="server-card" aria-label="SoulSMP Discord invite">
         <div class="card-top">
-          <img class="server-icon" id="serverIcon" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="TideSMP Discord server logo">
+          <img class="server-icon" id="serverIcon" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="SoulSMP Discord server logo">
           <div>
-            <div class="server-title">TideSMP Community</div>
-            <div class="server-sub">Vanilla Minecraft Survival</div>
+            <div class="server-title">SoulSMP Community</div>
+            <div class="server-sub">Minecraft Survival</div>
             <div class="verified">✦ OFFICIAL DISCORD</div>
           </div>
         </div>
@@ -151,19 +221,19 @@ h1 span{display:block;color:#9df5ff;text-shadow:0 0 35px rgba(63,221,255,.2)}
           </div>
         </div>
 
-        <a class="join" href="https://discord.gg/UTbJVnWVjJ" target="_blank" rel="noopener noreferrer">
+        <a class="join" href="https://discord.gg/KDCrCV8GDj" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.7 5.3A18.2 18.2 0 0 0 15.2 4l-.6 1.2a16.7 16.7 0 0 0-5.2 0L8.8 4a18.2 18.2 0 0 0-4.5 1.3C1.5 9.4.7 13.4 1.1 17.4a18.3 18.3 0 0 0 5.5 2.8l1.2-2a11.8 11.8 0 0 1-1.9-.9l.5-.4a13 13 0 0 0 11.2 0l.5.4a11.8 11.8 0 0 1-1.9.9l1.2 2a18.3 18.3 0 0 0 5.5-2.8c.5-4.6-.8-8.6-3.2-12.1ZM8.7 14.8c-1.1 0-2-1-2-2.2s.9-2.2 2-2.2 2 1 2 2.2-.9 2.2-2 2.2Zm6.6 0c-1.1 0-2-1-2-2.2s.9-2.2 2-2.2 2 1 2 2.2-.9 2.2-2 2.2Z"/></svg>
           Join the Discord <span aria-hidden="true">→</span>
         </a>
-        <div class="card-foot"><span>Join Discord to apply</span><a href="https://discord.gg/UTbJVnWVjJ" target="_blank" rel="noopener noreferrer">Open invite ↗</a></div>
-        <div class="status-note" id="statusNote">Connecting to Discord community counts…</div>
+        <div class="card-foot"><span>Enter the SoulSMP community</span><a href="https://discord.gg/KDCrCV8GDj" target="_blank" rel="noopener noreferrer">Open invite ↗</a></div>
+        <div class="status-note" id="statusNote">Connecting to SoulSMP community counts…</div>
       </section>
     </section>
 
     <footer class="footer">
-      <span>© <span id="year"></span> <strong>TideSMP</strong></span>
-      <span>Vanilla Minecraft SMP</span>
-      <a href="https://discord.gg/UTbJVnWVjJ" target="_blank" rel="noopener noreferrer">Join Discord ↗</a>
+      <span>© <span id="year"></span> <strong>SoulSMP</strong></span>
+      <span>Minecraft Survival SMP</span>
+      <a href="https://discord.gg/KDCrCV8GDj" target="_blank" rel="noopener noreferrer">Join Discord ↗</a>
     </footer>
   </main>
 </div>
@@ -172,7 +242,7 @@ h1 span{display:block;color:#9df5ff;text-shadow:0 0 35px rgba(63,221,255,.2)}
   "use strict";
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  const inviteCode = "UTbJVnWVjJ";
+  const inviteCode = "KDCrCV8GDj";
   const membersEl = document.getElementById("members");
   const onlineEl = document.getElementById("online");
   const noteEl = document.getElementById("statusNote");
